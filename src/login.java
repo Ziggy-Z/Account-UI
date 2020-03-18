@@ -1,4 +1,11 @@
+import java.awt.Color;
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /*
  * CS 2365 OOP Spring 2020
  * Zegedam Zegeye
@@ -13,6 +20,7 @@ public class login extends javax.swing.JFrame {
     int mousePY;
     String pass;
     String user;
+    JFrame frame;
 
     /**
      * Creates new form login
@@ -131,19 +139,13 @@ public class login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 255));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel4.setText("Username");
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
         jLabel5.setText("Password");
 
-        jCheckBox.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jCheckBox.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox.setText("Show Password");
         jCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,11 +189,13 @@ public class login extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox)))))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jCheckBox))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addComponent(New_Act)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,14 +272,26 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1MousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        pass = String.valueOf(jPasswordField2.getPassword());
-        user = String.valueOf(jTextField1.getText());
-        System.exit(0);
+            pass = String.valueOf(jPasswordField2.getPassword());
+            user = String.valueOf(jTextField1.getText());
+            try {
+            Path filePath = Paths.get("user.txt");
+            Scanner scan = new Scanner(filePath);
+            List<String> arr = new ArrayList<String>();
+            while (scan.hasNext()) {
+                arr.add(scan.nextLine());
+                }
+            if(arr.contains(user)){
+                System.out.println("Login Successful");
+            }
+            else{
+                JOptionPane.showMessageDialog(frame,"Incorrect username or password!","Error Message Box",JOptionPane.ERROR_MESSAGE);
+            }
+            }
+            catch (IOException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void New_ActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_New_ActMouseClicked
         NewAct form = new NewAct();
