@@ -281,7 +281,7 @@ public class login extends javax.swing.JFrame {
             while (scan.hasNext()) {
                 arr.add(scan.nextLine());
                 }
-            if(arr.contains(user)){
+            if(arr.contains(user) && arr.contains(pass)){
                 System.out.println("Login Successful");
             }
             else{

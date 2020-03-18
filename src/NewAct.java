@@ -261,8 +261,8 @@ public class NewAct extends javax.swing.JFrame {
                 user.createNewFile();
         }
         PrintWriter write = new PrintWriter(new FileWriter(user, true));
-        write.append(User+"\n");
-        write.append(pass+"\n");
+        write.append(Fname+' '+Lname+' '+Email+"\n"+User+"\n");
+        write.append(pass+"\n\n");
         write.close();
         } catch (IOException ex) {
             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
