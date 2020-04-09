@@ -1,9 +1,6 @@
-
 import java.awt.Color;
-import javafx.scene.Cursor;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
-
 /*
  * CS 2365 OOP Spring 2020
  * Zegedam Zegeye
@@ -412,6 +409,11 @@ public class application extends javax.swing.JFrame {
         jLabel5.setText(total);
         jTextField1.setText("");
         jLabel12.setForeground(Color.yellow);
+        float input3 = Float.parseFloat(jLabel5.getText());   
+        if(input3>0){
+            jLabel5.setForeground(Color.BLACK);
+            jLabel11.setForeground(Color.yellow);
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -425,6 +427,13 @@ public class application extends javax.swing.JFrame {
         jLabel5.setText(total);
         jTextField2.setText("");
         jLabel11.setForeground(Color.yellow);
+        float input3 = Float.parseFloat(jLabel5.getText());
+        if(input3 <=0){
+            jLabel5.setForeground(Color.RED);
+            jLabel11.setForeground(Color.RED);
+        }
+
+        
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked

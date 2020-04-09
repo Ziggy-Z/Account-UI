@@ -318,7 +318,8 @@ public class login extends javax.swing.JFrame {
             while (scan.hasNext()) {
                 arr.add(scan.nextLine());
                 }
-            if(arr.contains(user) && arr.contains(pass)){
+            int idx = arr.indexOf(user);
+            if(arr.equals(user) && arr.get(idx+1).equals(pass)){
                 application log = new application();
                 log.setVisible(true);
                 log.pack();
@@ -344,7 +345,7 @@ public class login extends javax.swing.JFrame {
 
     private void jPasswordField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField2KeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                    pass = String.valueOf(jPasswordField2.getPassword());
+           pass = String.valueOf(jPasswordField2.getPassword());
             user = String.valueOf(jTextField1.getText());
             try {
             Path filePath = Paths.get("user.txt");
@@ -353,7 +354,8 @@ public class login extends javax.swing.JFrame {
             while (scan.hasNext()) {
                 arr.add(scan.nextLine());
                 }
-            if(arr.contains(user) && arr.contains(pass)){
+            int idx = arr.indexOf(user);
+            if(arr.contains(user) && arr.get(idx+1).equals(pass)){
                 application log = new application();
                 log.setVisible(true);
                 log.pack();
@@ -378,38 +380,7 @@ public class login extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 153, 0));
     }//GEN-LAST:event_jLabel6MouseExited
 
-    public static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new login().setVisible(true);
-            }
-        });
 
-}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel New_Act;
     private javax.swing.JButton jButton1;
